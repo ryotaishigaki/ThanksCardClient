@@ -86,7 +86,7 @@ namespace ThanksCardClient.ViewModels
 
         void ExecuteShowManualCommand()
         {
-            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.Manual));
+            System.Diagnostics.Process.Start("notepad.exe", @"""C:\Users\shimabukuro_masato\Documents""");
         }
         #endregion
 

@@ -34,5 +34,16 @@ namespace ThanksCardClient.ViewModels
         {
             //throw new NotImplementedException();
         }
+
+        #region ShowOverallCardListCommand
+        private DelegateCommand _ShowOverallCardListCommand;
+        public DelegateCommand ShowOverallCardListCommand =>
+            _ShowOverallCardListCommand ?? (_ShowOverallCardListCommand = new DelegateCommand(ExecuteShowOverallCardListCommand));
+
+        void ExecuteShowOverallCardListCommand()
+        {
+            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.OverallCardList));
+        }
+        #endregion
     }
 }

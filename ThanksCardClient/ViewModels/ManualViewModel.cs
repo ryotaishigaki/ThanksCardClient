@@ -2,7 +2,11 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Packaging;
 using System.Linq;
+using System.Windows.Documents;
+using System.Windows.Xps.Packaging;
 
 namespace ThanksCardClient.ViewModels
 {
@@ -12,5 +16,6 @@ namespace ThanksCardClient.ViewModels
         {
 
         }
+        
     }
 }
