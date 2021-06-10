@@ -25,5 +25,8 @@
             <ContentControl prism:RegionManager.RegionName="FooterRegion" />
         </StackPanel>
         </ScrollViewer>
+        
+        
     </Grid>
+    
 </Window>
