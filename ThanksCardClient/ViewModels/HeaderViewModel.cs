@@ -86,7 +86,7 @@ namespace ThanksCardClient.ViewModels
 
         void ExecuteShowManualCommand()
         {
-            System.Diagnostics.Process p =System.Diagnostics.Process.Start("C:\\ThanksCardManual.pdf");
+            System.Diagnostics.Process p =System.Diagnostics.Process.Start("C:\\Users\\ishigaki_ryouta\\ThanksCardManual.pdf");
         }
         #endregion
 

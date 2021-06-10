@@ -21,6 +21,13 @@ namespace ThanksCardClient.ViewModels
             set { SetProperty(ref _Ranks, value); }
         }
 
+        private List<Rank> _RanksF;
+        public List<Rank> RanksF
+        {
+            get { return _RanksF; }
+            set { SetProperty(ref _RanksF, value); }
+        }
+
         private IRegionManager regionManager;
 
         public UserLinkViewModel(IRegionManager regionManager)
@@ -32,7 +39,8 @@ namespace ThanksCardClient.ViewModels
         {
             Rank ranks = new Rank();
             this.Ranks = await service.GetRanksAsync();
-            
+            this.RanksF = await service.GetFromRanksAsync();
+
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

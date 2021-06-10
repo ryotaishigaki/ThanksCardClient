@@ -439,5 +439,24 @@ namespace ThanksCardClient.Services
             }
             return responseRanks;
         }
+
+        public async Task<List<Rank>> GetFromRanksAsync()
+        {
+            List<Rank> responseRanks = null;
+            try
+            {
+                var response = await Client.GetAsync(this.BaseUrl + "/api/Rank");
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    responseRanks = JsonConvert.DeserializeObject<List<Rank>>(responseContent);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception in RestService.GetRanksAsync: " + e);
+            }
+            return responseRanks;
+        }
     }
 }

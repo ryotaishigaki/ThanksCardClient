@@ -19,44 +19,10 @@
         </Grid.RowDefinitions>
 
         <StackPanel>
-            <TextBlock Text="個人間連携" Width="100" FontSize="15"/>
+            <TextBlock Text="個人間連携閲覧" Width="120" FontSize="15"/>
             <TextBlock Text=""/>
 
             <StackPanel Orientation="Horizontal" >
-
-                <TextBlock Text="部署:"/>
-
-                <ComboBox>
-
-
-
-                </ComboBox>
-
-                <TextBlock Text="課:"/>
-
-                <ComboBox>
-
-
-
-                </ComboBox>
-
-
-
-                <TextBlock Text="氏名:"/>
-
-                <ComboBox >
-
-
-
-                </ComboBox>
-
-                <TextBlock Text="対象期間:"/>
-
-                <ComboBox>
-
-
-
-                </ComboBox>
 
             </StackPanel>
 
@@ -69,6 +35,22 @@
                         <DataGridTextColumn Header="ユーザー名" Binding="{Binding Name}" />
 
                         <DataGridTextColumn Header="感謝カード受信数" Binding="{Binding Count}" />
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </StackPanel>
+
+            <StackPanel>
+
+                <DataGrid ItemsSource="{Binding RanksF}" AutoGenerateColumns="False" CanUserAddRows="False">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="ユーザー名" Binding="{Binding Name}" />
+
+                        <DataGridTextColumn Header="感謝カード送信数" Binding="{Binding Count}" />
 
                     </DataGrid.Columns>
 

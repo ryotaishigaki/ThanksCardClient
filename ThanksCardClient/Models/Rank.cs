@@ -28,7 +28,7 @@ namespace ThanksCardClient.Models
         }
         #endregion
 
-        #region GetRank 
+        #region GetToRank 
         public async Task<List<Rank>> GetRanksAsync()
         {
 
@@ -39,7 +39,19 @@ namespace ThanksCardClient.Models
             return getRanks;
 
         }
+        #endregion
 
+        #region GetFromRank
+        public async Task<List<Rank>> GetFromRanksAsync()
+        {
+
+            IRestService rest = new RestService();
+
+            List<Rank> getRanks = await rest.GetFromRanksAsync();
+
+            return getRanks;
+
+        }
         #endregion
     }
 }
