@@ -1,37 +1,85 @@
-﻿<UserControl x:Class="ThanksCardClient.Views.UserLink"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ThanksCardClient.Views"
-             mc:Ignorable="d" >
+﻿<UserControl x:Class="ThanksCardClient.Views.UserLink" 
+
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+
+             xmlns:prism="http://prismlibrary.com/"              
+
+             prism:ViewModelLocator.AutoWireViewModel="True">
+
     <Grid>
+
         <Grid.RowDefinitions>
+
             <RowDefinition Height="32*"/>
+
             <RowDefinition Height="13*"/>
+
         </Grid.RowDefinitions>
+
         <StackPanel>
-            <TextBlock Text="個人間連携"/>
+            <TextBlock Text="個人間連携" Width="100" FontSize="15"/>
             <TextBlock Text=""/>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,51.022">
-            <TextBlock Text="部署:"/>
+
+            <StackPanel Orientation="Horizontal" >
+
+                <TextBlock Text="部署:"/>
+
                 <ComboBox>
 
+
+
                 </ComboBox>
-            <TextBlock Text="課:"/>
-            <ComboBox>
 
-            </ComboBox>
+                <TextBlock Text="課:"/>
 
-            <TextBlock Text="氏名:"/>
-            <ComboBox>
-
-            </ComboBox>
-            <TextBlock Text="対象期間:"/>
                 <ComboBox>
 
+
+
                 </ComboBox>
+
+
+
+                <TextBlock Text="氏名:"/>
+
+                <ComboBox >
+
+
+
+                </ComboBox>
+
+                <TextBlock Text="対象期間:"/>
+
+                <ComboBox>
+
+
+
+                </ComboBox>
+
             </StackPanel>
+
+            <StackPanel>
+
+                <DataGrid ItemsSource="{Binding Ranks}" AutoGenerateColumns="False" CanUserAddRows="False">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="ユーザー名" Binding="{Binding Name}" />
+
+                        <DataGridTextColumn Header="感謝カード受信数" Binding="{Binding Count}" />
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </StackPanel>
+
         </StackPanel>
+
+
+
     </Grid>
-</UserControl>
+
+</UserControl> 

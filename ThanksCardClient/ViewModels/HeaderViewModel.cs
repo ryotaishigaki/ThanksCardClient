@@ -86,7 +86,7 @@ namespace ThanksCardClient.ViewModels
 
         void ExecuteShowManualCommand()
         {
-            System.Diagnostics.Process.Start("notepad.exe", @"""C:\Users\shimabukuro_masato\Documents""");
+            System.Diagnostics.Process p =System.Diagnostics.Process.Start("C:\\ThanksCardManual.pdf");
         }
         #endregion
 
