@@ -42,6 +42,17 @@ namespace ThanksCardClient.ViewModels
         {
             //throw new NotImplementedException();
         }
+
+        #region ShowThanksCardListCommand
+        private DelegateCommand _ShowThanksCardListCommand;
+        public DelegateCommand ShowThanksCardListCommand =>
+            _ShowThanksCardListCommand ?? (_ShowThanksCardListCommand = new DelegateCommand(ExecuteShowThanksCardListCommand));
+
+        void ExecuteShowThanksCardListCommand()
+        {
+            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.ThanksCardList));
+        }
+        #endregion
     }
 }
 

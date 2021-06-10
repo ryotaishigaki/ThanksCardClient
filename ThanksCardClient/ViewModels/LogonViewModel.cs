@@ -67,5 +67,12 @@ namespace ThanksCardClient.ViewModels
             }
         }
         #endregion
+
+        private string _title = "ログイン画面";
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
     }
 }

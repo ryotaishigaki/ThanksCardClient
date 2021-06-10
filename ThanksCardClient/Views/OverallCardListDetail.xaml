@@ -37,6 +37,11 @@
                 </DataGrid.Columns>
             </DataGrid>
             <TextBlock Text="{Binding ThanksCards.CreatedDateTime}"></TextBlock>
+
+            <StackPanel>
+                <TextBlock Text=""/>
+                <Button Content="戻る" Command="{Binding ShowOverallCardListCommand}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

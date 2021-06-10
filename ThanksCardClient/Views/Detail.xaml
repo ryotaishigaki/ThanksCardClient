@@ -25,11 +25,11 @@
                 </DataGrid.Columns>
             </DataGrid>
             <TextBlock Text="{Binding UThanksCards.Body}"></TextBlock>
-            
-            <TextBlock Text=""/>
-            <TextBox Height="69.855"></TextBox>
 
-            <Button Content="送信" Margin="490,0,0,0"></Button>
+            <StackPanel>
+                <TextBlock Text=""/>
+                <Button Content="戻る" Command="{Binding ShowThanksCardListCommand}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>
