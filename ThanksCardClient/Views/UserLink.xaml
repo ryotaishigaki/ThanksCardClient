@@ -19,9 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel>
-
-            <TextBlock Text="個人間連携"/>
-
+            <TextBlock Text="個人間連携" Width="100" FontSize="15"/>
             <TextBlock Text=""/>
 
             <StackPanel Orientation="Horizontal" >
