@@ -66,6 +66,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\ThanksCard.cs" />
     <Compile Include="Models\ThanksCardTag.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="ViewModels\ThanksCardListViewModel.cs" />
     <Compile Include="ViewModels\UserCreateViewModel.cs" />
     <Compile Include="ViewModels\UserEditViewModel.cs" />
+    <Compile Include="ViewModels\UserLinkViewModel.cs" />
     <Compile Include="ViewModels\UserMstViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\CardDelete.xaml.cs">
