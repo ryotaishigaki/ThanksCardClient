@@ -91,6 +91,15 @@ namespace ThanksCardClient.Models
         }
         #endregion
 
+        #region ThanksCardThanksRank
+        //new
+        private int? _ThanksRank;
+        public int? ThanksRank
+        {
+            get { return _ThanksRank; }
+            set { SetProperty(ref _ThanksRank, value); }
+        }
+        #endregion
 
         public ThanksCard()
         {
@@ -110,5 +119,21 @@ namespace ThanksCardClient.Models
             ThanksCard createdThanksCard = await rest.PostThanksCardAsync(thanksCard);
             return createdThanksCard;
         }
+
+        public async Task<ThanksCard> DeleteThanksCardAsync(long Id)
+        {
+            IRestService rest = new RestService();
+            ThanksCard deletedThanksCards = await rest.DeleteThanksCardAsync(Id);
+            return deletedThanksCards;
+        }
+
+        public async Task<List<ThanksCard>> GetTagThanksCardsAsync()
+        {
+            IRestService rest = new RestService();
+            List<ThanksCard> TagthanksCards = await rest.GetTagThanksCardsAsync();
+            return TagthanksCards;
+        }
     }
+
+    
 }

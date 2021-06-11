@@ -267,6 +267,25 @@ namespace ThanksCardClient.Services
             return responseThanksCards;
         }
 
+        public async Task<List<ThanksCard>> GetTagThanksCardsAsync()
+        {
+            List<ThanksCard> responseThanksCards = null;
+            try
+            {
+                var response = await Client.GetAsync(this.BaseUrl + "/api/ThanksCard/Tag");
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    responseThanksCards = JsonConvert.DeserializeObject<List<ThanksCard>>(responseContent);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception in RestService.GetThanksCardsAsync: " + e);
+            }
+            return responseThanksCards;
+        }
+
         public async Task<ThanksCard> PostThanksCardAsync(ThanksCard thanksCard)
         {
             var jObject = JsonConvert.SerializeObject(thanksCard);
@@ -289,6 +308,25 @@ namespace ThanksCardClient.Services
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine("Exception in RestService.PostThanksCardAsync: " + e);
+            }
+            return responseThanksCard;
+        }
+
+        public async Task<ThanksCard> DeleteThanksCardAsync(long Id)
+        {
+            ThanksCard responseThanksCard = null;
+            try
+            {
+                var response = await Client.DeleteAsync(this.BaseUrl + "/api/ThanksCard/" + Id);
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    responseThanksCard = JsonConvert.DeserializeObject<ThanksCard>(responseContent);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception in RestService.DeleteUserAsync: " + e);
             }
             return responseThanksCard;
         }
@@ -381,6 +419,44 @@ namespace ThanksCardClient.Services
                 System.Diagnostics.Debug.WriteLine("Exception in RestService.DeleteTagAsync: " + e);
             }
             return responseTag;
+        }
+
+        public async Task<List<Rank>> GetRanksAsync()
+        {
+            List<Rank> responseRanks = null;
+            try
+            {
+                var response = await Client.GetAsync(this.BaseUrl + "/api/Rank");
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    responseRanks = JsonConvert.DeserializeObject<List<Rank>>(responseContent);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception in RestService.GetRanksAsync: " + e);
+            }
+            return responseRanks;
+        }
+
+        public async Task<List<Rank>> GetFromRanksAsync()
+        {
+            List<Rank> responseRanks = null;
+            try
+            {
+                var response = await Client.GetAsync(this.BaseUrl + "/api/Rank");
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    responseRanks = JsonConvert.DeserializeObject<List<Rank>>(responseContent);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception in RestService.GetRanksAsync: " + e);
+            }
+            return responseRanks;
         }
     }
 }

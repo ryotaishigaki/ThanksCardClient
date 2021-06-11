@@ -2,6 +2,7 @@
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
+using ThanksCardClient.ViewModels;
 
 namespace ThanksCardClient
 {
@@ -32,6 +33,16 @@ namespace ThanksCardClient
             containerRegistry.RegisterForNavigation<TagMst>();
             containerRegistry.RegisterForNavigation<TagCreate>();
             containerRegistry.RegisterForNavigation<TagEdit>();
+            containerRegistry.RegisterForNavigation<Process>();
+            containerRegistry.RegisterForNavigation<DepartmentLink>();
+            containerRegistry.RegisterForNavigation<UserLink>();
+            containerRegistry.RegisterForNavigation<CardDelete>();
+            containerRegistry.RegisterForNavigation<OverallCardList>(); 
+            containerRegistry.RegisterForNavigation<OverallCardListDetail>();
+            containerRegistry.RegisterForNavigation<Detail>();
+            containerRegistry.RegisterForNavigation<SendConfirm>(); 
+            containerRegistry.RegisterForNavigation<Manual>();
+       
         }
     }
 }

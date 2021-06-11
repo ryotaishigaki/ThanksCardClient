@@ -1,4 +1,4 @@
-﻿using Prism.Commands;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
@@ -9,7 +9,7 @@ using ThanksCardClient.Services;
 
 namespace ThanksCardClient.ViewModels
 {
-    public class ThanksCardListViewModel : BindableBase, INavigationAware
+    public class OverallCardListViewModel : BindableBase, INavigationAware
     {
         private IRegionManager regionManager;
 
@@ -24,16 +24,17 @@ namespace ThanksCardClient.ViewModels
         }
         #endregion
 
-        #region ThanksCardsLoginUserProperty
-        private List<ThanksCard> _UThanksCards;
-        public List<ThanksCard> UThanksCards
+        #region ThanksCardsRanksProperty
+        private List<ThanksCard> _ThanksCardsRank;
+        public List<ThanksCard> ThanksCardsRank
         {
-            get { return _UThanksCards; }
-            set { SetProperty(ref _UThanksCards, value); }
+            get { return _ThanksCardsRank; }
+            set { SetProperty(ref _ThanksCardsRank, value);}
         }
         #endregion
 
-        public ThanksCardListViewModel(IRegionManager regionManager)
+
+        public OverallCardListViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
         }
@@ -43,10 +44,9 @@ namespace ThanksCardClient.ViewModels
         {
             ThanksCard thanksCard = new ThanksCard();
             this.ThanksCards = await thanksCard.GetThanksCardsAsync();
-            this.UThanksCards = await service.GetThanksCardsAsync();
-            User AuthorizedUser = SessionService.Instance.AuthorizedUser;
-            UThanksCards = UThanksCards.Where(x => x.ToId == AuthorizedUser.Id).ToList();
-
+            this.ThanksCardsRank = await service.GetThanksCardsAsync();
+            ThanksCardsRank = ThanksCardsRank.Where(x => x.ThanksRank > 4).ToList();
+            //ThanksCardsRank = ThanksCardsRank.OrderByDescending(x => x.ThanksRank).FirstOrDefault();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -58,19 +58,19 @@ namespace ThanksCardClient.ViewModels
         {
             //throw new NotImplementedException();
         }
-        
-        #region ShowDetailCommand
-        private DelegateCommand<ThanksCard> _ShowDetailCommand;
-        public DelegateCommand<ThanksCard> ShowDetailCommand =>
-            _ShowDetailCommand ?? (_ShowDetailCommand = new DelegateCommand<ThanksCard>(ExecuteShowDetailCommand));
 
-        void ExecuteShowDetailCommand(ThanksCard SelectedDetail)
+        #region ShowOverallCardListDetailCommand
+        private DelegateCommand<ThanksCard> _ShowOverallCardListDetailCommand;
+        public DelegateCommand<ThanksCard> ShowOverallCardListDetailCommand =>
+            _ShowOverallCardListDetailCommand ?? (_ShowOverallCardListDetailCommand = new DelegateCommand<ThanksCard>(ExecuteShowOverallCardListDetailCommand));
+
+        void ExecuteShowOverallCardListDetailCommand(ThanksCard SelectedOverallCardListDetail)
         {
 
             // 対象のThanksCardをパラメーターとして画面遷移先に渡す。
             var parameters = new NavigationParameters();
-            parameters.Add("SelectedDetail", SelectedDetail);
-            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.Detail), parameters);
+            parameters.Add("SelectedOverallCardListDetail", SelectedOverallCardListDetail);
+            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.OverallCardListDetail), parameters);
         }
         #endregion
     }

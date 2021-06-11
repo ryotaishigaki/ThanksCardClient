@@ -36,9 +36,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.WindowsRuntime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETCore\v4.5\System.Runtime.WindowsRuntime.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +53,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Windows">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Annotated\Windows.winmd</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -59,6 +67,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\ThanksCard.cs" />
     <Compile Include="Models\ThanksCardTag.cs" />
@@ -66,11 +75,19 @@
     <Compile Include="Services\IRestService.cs" />
     <Compile Include="Services\RestService.cs" />
     <Compile Include="Services\SessionService.cs" />
+    <Compile Include="ViewModels\CardDeleteViewModel.cs" />
     <Compile Include="ViewModels\DepartmentCreateViewModel.cs" />
     <Compile Include="ViewModels\DepartmentEditViewModel.cs" />
+    <Compile Include="ViewModels\DepartmentLinkViewModel.cs" />
     <Compile Include="ViewModels\DepartmentMstViewModel.cs" />
+    <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\FooterViewModel.cs" />
     <Compile Include="ViewModels\HeaderViewModel.cs" />
+    <Compile Include="ViewModels\ManualViewModel.cs" />
+    <Compile Include="ViewModels\OverallCardListDetailViewModel.cs" />
+    <Compile Include="ViewModels\OverallCardListViewModel.cs" />
+    <Compile Include="ViewModels\ProcessViewModel.cs" />
+    <Compile Include="ViewModels\SendConfirmViewModel.cs" />
     <Compile Include="ViewModels\TagCreateViewModel.cs" />
     <Compile Include="ViewModels\TagEditViewModel.cs" />
     <Compile Include="ViewModels\TagMstViewModel.cs" />
@@ -78,21 +95,44 @@
     <Compile Include="ViewModels\ThanksCardListViewModel.cs" />
     <Compile Include="ViewModels\UserCreateViewModel.cs" />
     <Compile Include="ViewModels\UserEditViewModel.cs" />
+    <Compile Include="ViewModels\UserLinkViewModel.cs" />
     <Compile Include="ViewModels\UserMstViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\CardDelete.xaml.cs">
+      <DependentUpon>CardDelete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DepartmentCreate.xaml.cs">
       <DependentUpon>DepartmentCreate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DepartmentEdit.xaml.cs">
       <DependentUpon>DepartmentEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DepartmentLink.xaml.cs">
+      <DependentUpon>DepartmentLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DepartmentMst.xaml.cs">
       <DependentUpon>DepartmentMst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Detail.xaml.cs">
+      <DependentUpon>Detail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manual.xaml.cs">
+      <DependentUpon>Manual.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OverallCardList.xaml.cs">
+      <DependentUpon>OverallCardList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Process.xaml.cs">
+      <DependentUpon>Process.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SendConfirm.xaml.cs">
+      <DependentUpon>SendConfirm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TagCreate.xaml.cs">
       <DependentUpon>TagCreate.xaml</DependentUpon>
@@ -118,6 +158,16 @@
     <Compile Include="Views\UserMst.xaml.cs">
       <DependentUpon>UserMst.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserLink.xaml.cs">
+      <DependentUpon>UserLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OverallCardListDetail.xaml.cs">
+      <DependentUpon>OverallCardListDetail.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\CardDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DepartmentCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,13 +176,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DepartmentLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DepartmentMst.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Footer.xaml">
+    <Page Include="Views\Detail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Footer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Header.xaml">
       <SubType>Designer</SubType>
@@ -159,6 +217,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Manual.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OverallCardList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Process.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SendConfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TagCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,6 +265,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UserLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OverallCardListDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -216,10 +298,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MahApps.Metro">
+      <Version>2.4.5</Version>
+    </PackageReference>
+    <PackageReference Include="MaterialDesignThemes.MahApps">
+      <Version>0.1.7</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
     <PackageReference Include="Prism.Unity" Version="7.2.0.1367" />
+    <PackageReference Include="xunit">
+      <Version>2.4.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

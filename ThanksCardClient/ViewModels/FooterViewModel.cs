@@ -97,5 +97,49 @@ namespace ThanksCardClient.ViewModels
             this.regionManager.Regions["FooterRegion"].RemoveAll();
         }
         #endregion
+
+        #region ShowProcessCommand
+        private DelegateCommand _ShowProcessCommand;
+        public DelegateCommand ShowProcessCommand =>
+            _ShowProcessCommand ?? (_ShowProcessCommand = new DelegateCommand(ExecuteShowProcessCommand));
+
+        void ExecuteShowProcessCommand()
+        {
+            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.Process));
+        }
+        #endregion
+
+        #region ShowDepartmentLinkCommand
+        private DelegateCommand _ShowDepartmentLinkCommand;
+        public DelegateCommand ShowDepartmentLinkCommand =>
+            _ShowDepartmentLinkCommand ?? (_ShowDepartmentLinkCommand = new DelegateCommand(ExecuteShowDepartmentLinkCommand));
+
+        void ExecuteShowDepartmentLinkCommand()
+        {
+            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.DepartmentLink));
+        }
+        #endregion
+
+        #region ShowUserLinkCommand
+        private DelegateCommand _ShowUserLinkCommand;
+        public DelegateCommand ShowUserLinkCommand =>
+            _ShowUserLinkCommand ?? (_ShowUserLinkCommand = new DelegateCommand(ExecuteShowUserLinkCommand));
+
+        void ExecuteShowUserLinkCommand()
+        {
+            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.UserLink));
+        }
+        #endregion
+
+        #region ShowCardDeleteCommand
+        private DelegateCommand _ShowCardDeleteCommand;
+        public DelegateCommand ShowCardDeleteCommand =>
+            _ShowCardDeleteCommand ?? (_ShowCardDeleteCommand = new DelegateCommand(ExecuteShowCardDeleteCommand));
+
+        void ExecuteShowCardDeleteCommand()
+        {
+            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.CardDelete));
+        }
+        #endregion
     }
 }

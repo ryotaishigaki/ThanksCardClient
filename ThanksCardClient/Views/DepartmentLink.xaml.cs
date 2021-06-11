@@ -3,14 +3,13 @@
 namespace ThanksCardClient.Views
 {
     /// <summary>
-    /// Interaction logic for ThanksCardCreate
+    /// Interaction logic for DepartmentLink
     /// </summary>
-    public partial class ThanksCardCreate : UserControl
+    public partial class DepartmentLink : UserControl
     {
-        public ThanksCardCreate()
+        public DepartmentLink()
         {
             InitializeComponent();
         }
- 
     }
 }

@@ -9,7 +9,7 @@ using ThanksCardClient.Services;
 
 namespace ThanksCardClient.ViewModels
 {
-    public class ThanksCardListViewModel : BindableBase, INavigationAware
+    public class ProcessViewModel : BindableBase, INavigationAware
     {
         private IRegionManager regionManager;
 
@@ -33,7 +33,7 @@ namespace ThanksCardClient.ViewModels
         }
         #endregion
 
-        public ThanksCardListViewModel(IRegionManager regionManager)
+        public ProcessViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
         }
@@ -43,9 +43,7 @@ namespace ThanksCardClient.ViewModels
         {
             ThanksCard thanksCard = new ThanksCard();
             this.ThanksCards = await thanksCard.GetThanksCardsAsync();
-            this.UThanksCards = await service.GetThanksCardsAsync();
-            User AuthorizedUser = SessionService.Instance.AuthorizedUser;
-            UThanksCards = UThanksCards.Where(x => x.ToId == AuthorizedUser.Id).ToList();
+            this.UThanksCards = await service.GetTagThanksCardsAsync();
 
         }
 
@@ -58,20 +56,5 @@ namespace ThanksCardClient.ViewModels
         {
             //throw new NotImplementedException();
         }
-        
-        #region ShowDetailCommand
-        private DelegateCommand<ThanksCard> _ShowDetailCommand;
-        public DelegateCommand<ThanksCard> ShowDetailCommand =>
-            _ShowDetailCommand ?? (_ShowDetailCommand = new DelegateCommand<ThanksCard>(ExecuteShowDetailCommand));
-
-        void ExecuteShowDetailCommand(ThanksCard SelectedDetail)
-        {
-
-            // 対象のThanksCardをパラメーターとして画面遷移先に渡す。
-            var parameters = new NavigationParameters();
-            parameters.Add("SelectedDetail", SelectedDetail);
-            this.regionManager.RequestNavigate("ContentRegion", nameof(Views.Detail), parameters);
-        }
-        #endregion
     }
-}
+    }
