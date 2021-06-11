@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel>
-            <TextBlock Text="個人間連携閲覧" Width="120" FontSize="15"/>
+            <TextBlock Text="ランキング画面" Width="120" FontSize="15"/>
             <TextBlock Text=""/>
 
             <StackPanel Orientation="Horizontal" >
@@ -28,6 +28,7 @@
 
             <StackPanel>
 
+                <TextBlock Text="受信数ランキング:"/>
                 <DataGrid ItemsSource="{Binding Ranks}" AutoGenerateColumns="False" CanUserAddRows="False">
 
                     <DataGrid.Columns>
@@ -44,6 +45,8 @@
 
             <StackPanel>
 
+                <TextBlock Text=""/>
+                <TextBlock Text="送信数ランキング"/>
                 <DataGrid ItemsSource="{Binding RanksF}" AutoGenerateColumns="False" CanUserAddRows="False">
 
                     <DataGrid.Columns>

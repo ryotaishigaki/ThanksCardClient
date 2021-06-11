@@ -7,9 +7,9 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="ユーザ管理" FontSize="11" Command="{Binding ShowUserMstCommand}" IsEnabled="{Binding AuthorizedUser.IsAdmin}"/>
             <Button Content="部署管理" FontSize="11" Command="{Binding ShowDepartmentMstCommand}" IsEnabled="{Binding AuthorizedUser.IsAdmin}"/>
-            <Button Content="タグ管理" FontSize="11" Command="{Binding ShowTagMstCommand}" IsEnabled="{Binding AuthorizedUser.IsAdmin}"/>
+            <Button Content="カテゴリー管理" FontSize="11" Command="{Binding ShowTagMstCommand}" IsEnabled="{Binding AuthorizedUser.IsAdmin}"/>
             <Button Content="業務プロセス改善" FontSize="11" Command="{Binding ShowProcessCommand}" IsEnabled="{Binding AuthorizedUser.IsAdmin}"/>
-            <Button Content="個人間関連解析" FontSize="11" Command="{Binding ShowUserLinkCommand}" IsEnabled="{Binding AuthorizedUser.IsAdmin}"/>
+            <Button Content="ランキング画面" FontSize="11" Command="{Binding ShowUserLinkCommand}" IsEnabled="{Binding AuthorizedUser.IsAdmin}"/>
             <Button Content="感謝カード削除" FontSize="11" Command="{Binding ShowCardDeleteCommand}" IsEnabled="{Binding AuthorizedUser.IsAdmin}"/>
         </StackPanel>
     </Grid>

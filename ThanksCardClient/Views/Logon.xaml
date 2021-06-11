@@ -8,10 +8,10 @@
         <StackPanel Grid.RowSpan="3" Margin="0,0,0,0.002" Grid.ColumnSpan="2">
             <TextBlock Text="{Binding ErrorMessage}" Foreground="Red"/>
 
-            <TextBlock Text="Name:"/>
+            <TextBlock Text="氏名:"/>
             <TextBox Text="{Binding User.Name}"/>
 
-            <TextBlock Text="Password:"/>
+            <TextBlock Text="パスワード:"/>
             <TextBox Text="{Binding User.Password}"/>
             <TextBlock Text=""/>
             <Button  Content="ログイン" Command="{Binding LogonCommand}" Height="30" Width="100"  FontSize="13" Background="#FFB4B4B4" Margin="18,0"/>
